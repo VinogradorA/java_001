@@ -10,6 +10,9 @@ public class MyFirstProgram {
 
 		Rectangle r = new Rectangle(4,6);
 		System.out.println("Площадь прямоугольника со сторонами"+ r.a + "и" + r.b + "=" + area(r));
+
+		Point p = new Point(3,8);
+		System.out.println("Растояние между двумя точками"+ p.p2 + "и" + p.p1 + "=" + distance(p));
 	}
 
 	public static void  hello(String somebody) {
@@ -22,5 +25,6 @@ public class MyFirstProgram {
 
 	public static double area(Rectangle r){ return r.a*r.b;
 	}
-	public static double distance
+	public static double distance (Point p){return p.p1+p.p2;
+	}
 }
