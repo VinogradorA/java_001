@@ -20,7 +20,7 @@ public class MyFirstProgram {
 		return s.l*s.l;
 	}
 
-		public static double area(Rectangle r){
-		return r.a*r.b;
+	public static double area(Rectangle r){ return r.a*r.b;
 	}
+	public static double distance
 }
