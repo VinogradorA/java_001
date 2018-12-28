@@ -1,11 +1,8 @@
 package ru.stqa.ptf.sandbox;
 
 public class Point {
-  public double p1;
-  public double p2;
-
-  public Point(double p1, double p2) {
-    this.p1 = p1;
-    this.p2 = p2;
+  public double(int x1, int y1, int x2, int y2)
+  {
+    return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
   }
 }
