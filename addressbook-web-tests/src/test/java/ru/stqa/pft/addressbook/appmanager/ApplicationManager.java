@@ -5,16 +5,19 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.concurrent.TimeUnit;
 
-public class ApplicationManager {
-  private WebDriver wd;
+public class ApplicationManager extends NavigationHelper {
+
+  public WebDriver wd;
+
+  private GroupHelper groupHelper;
 
   public void init() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    groupHelper = new GroupHelper(wd);
     login("admin", "secret");
   }
 
@@ -27,30 +30,8 @@ public class ApplicationManager {
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
-  public void reternToGroupPage() {
-    wd.findElement(By.linkText("Logout")).click();
-  }
-
-  public void submitGroupCreation() {
-    wd.findElement(By.linkText("groups")).click();
-  }
-
-  public void fillGroupForm(GroupData groupData) {
-    wd.findElement(By.name("group_name")).click();
-    wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-    wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-    wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-  }
-
-  public void initGroupCreation() {
-    wd.findElement(By.name("new")).click();
-  }
-
   public void gotoGroupPage() {
-    wd.findElement(By.linkText("groups")).click();
+    groupHelper.submitGroupCreation();
   }
 
   public void stop() {
@@ -75,11 +56,7 @@ public class ApplicationManager {
     }
   }
 
-  public void deleteSelectedGroups() {
-    wd.findElement(By.name("delete")).click();
-  }
-
-  public void selectGroup() {
-    wd.findElement(By.name("selected[]")).click();
+  public GroupHelper getGroupHelper() {
+    return groupHelper;
   }
 }
