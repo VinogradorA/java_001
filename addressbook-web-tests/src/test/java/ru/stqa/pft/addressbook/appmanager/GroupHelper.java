@@ -10,12 +10,12 @@ public class GroupHelper extends HelperBase {
     super(wd);
   }
 
-  public void reternToGroupPage() {
+  public void returnToGroupPage() {
     click(By.linkText("Logout"));
   }
 
   public void submitGroupCreation() {
-    click(By.linkText("groups"));
+    click(By.name("submit"));
   }
 
   public void fillGroupForm(GroupData groupData) {
